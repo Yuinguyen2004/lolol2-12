@@ -39,7 +39,7 @@ namespace BTVN_2_12_2024
 
         private void btn_add_Click(object sender, EventArgs e)
         {
-            Form2 frm = new Form2(UpdateNhanVien);
+            Form2 frm = new Form2();
             if (frm.ShowDialog() == DialogResult.OK)
             {
                 dtg_quanlyNV.Rows.Add(frm.MSNV, frm.Name, frm.Luong);
@@ -52,7 +52,7 @@ namespace BTVN_2_12_2024
             {
                 DataGridViewRow selectedRow = dtg_quanlyNV.SelectedRows[0];
 
-                Form2 frm = new Form2(UpdateNhanVien, selectedRow.Cells[0].Value.ToString(), selectedRow.Cells[1].Value.ToString(), selectedRow.Cells[2].Value.ToString());
+                Form2 frm = new Form2(selectedRow.Cells[0].Value.ToString(), selectedRow.Cells[1].Value.ToString(), selectedRow.Cells[2].Value.ToString());
                 if (frm.ShowDialog() == DialogResult.OK)
                 {
                     selectedRow.Cells[0].Value = frm.MSNV;
@@ -68,11 +68,6 @@ namespace BTVN_2_12_2024
             {
                 dtg_quanlyNV.Rows.RemoveAt(dtg_quanlyNV.SelectedRows[0].Index);
             }
-        }
-
-        private void UpdateNhanVien(string msnv, string name, string luong)
-        {
-            dtg_quanlyNV.Rows.Add(msnv, name, luong);
         }
 
         private void dtg_quanlyNV_CellClick(object sender, DataGridViewCellEventArgs e)

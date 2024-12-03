@@ -18,17 +18,15 @@ namespace BTVN_2_12_2024
         public string Name { get; set; }
         public string Luong { get; set; }
 
-        private UpdateNhanVienDelegate _updateNhanVienDelegate;
-        public Form2(UpdateNhanVienDelegate updateNhanVienDelegate)
+        public Form2()
         {
             InitializeComponent();
-            _updateNhanVienDelegate = updateNhanVienDelegate;
         }
 
-        public Form2(UpdateNhanVienDelegate updateNhanVienDelegate, string msnv, string name, string luong) 
+        public Form2(string msnv, string name, string luong) 
         {
             InitializeComponent();
-            _updateNhanVienDelegate = updateNhanVienDelegate;
+            
             MSNV = msnv;
             Name = name;
             Luong = luong;
@@ -37,6 +35,7 @@ namespace BTVN_2_12_2024
             txt_name.Text = name;
             txt_luong.Text = luong;
         }
+
         private void Form2_Load(object sender, EventArgs e)
         {
  
@@ -47,8 +46,6 @@ namespace BTVN_2_12_2024
             MSNV = txt_msnv.Text;
             Name = txt_name.Text;
             Luong = txt_luong.Text;
-
-            _updateNhanVienDelegate(MSNV, Name, Luong);
 
             DialogResult = DialogResult.OK;
             Close();
